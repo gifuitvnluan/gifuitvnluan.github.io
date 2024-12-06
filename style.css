@@ -277,7 +277,7 @@ section.hero {
     line-height: 180%;
 }
 
-/* section.hero:before {
+section.hero:before {
     content: "";
     background-color: #212121;
     position: absolute;
@@ -285,9 +285,9 @@ section.hero {
     left: 0;
     width: 15vw;
     height: 15vw;
-} */
+}
 
-/* section.hero:after {
+section.hero:after {
     content: "";
     background-color: #efefef;
     position: absolute;
@@ -296,9 +296,9 @@ section.hero {
     width: 15vw;
     height: 15vw;
     border-top-left-radius: 15vw;
-} */
+}
 
-/* section.two {
+section.two {
     background-color: #efefef;
 }
 
@@ -312,7 +312,7 @@ section.four {
 
 section.five {
     background-color: #29639c;
-} */
+}
 
 @media screen and (min-width: 1200px) {
     .hero {
