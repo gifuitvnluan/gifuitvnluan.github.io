@@ -1,1 +1,702 @@
-Tô Mỳ Tôm
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://tomytom.f5.si/assets/defaultpage/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://tomytom.f5.si/assets/defaultpage/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://tomytom.f5.si/assets/defaultpage/images/favicon.png">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Site is created successfully! | Tô Mỳ Tôm</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap");
+
+        * {
+            box-sizing: border-box;
+            cursor: none;
+        }
+
+        html,
+        body {
+            background: #efefef;
+            color: #212121;
+            font-family: "Montserrat", sans-serif;
+            font-size: 16px;
+            height: 100%;
+        }
+
+        ::selection {
+            background: #efefef;
+            color: #212121;
+            mix-blend-mode: difference;
+        }
+
+        ::-moz-selection {
+            background: #efefef;
+            color: #212121;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-weight: 900;
+        }
+
+        h1 {
+            font-size: 3em;
+        }
+
+        .hero-title {
+            font-size: 8vw;
+            line-height: 1em;
+            font-weight: 900;
+        }
+
+        .nav-title {
+            font-size: 4em;
+        }
+
+        a {
+            transition: all 0.25s ease-in-out;
+        }
+
+        .white,
+        a.white {
+            color: #efefef;
+        }
+
+        .black {
+            color: #212121;
+        }
+
+        .pearl,
+        a.pearl {
+            color: #fff;
+        }
+
+        .green,
+        a.green {
+            color: #00BCD4;
+        }
+
+        .pink {
+            color: #b73b3b;
+        }
+
+        .blend {
+            mix-blend-mode: difference !important;
+            color: #efefef;
+            position: relative;
+            z-index: 2;
+        }
+
+        .bg-black {
+            background-color: #212121;
+        }
+
+        .bg-green {
+            background-color: #00BCD4;
+        }
+
+        .bg-topographic {
+            background-image: url(https://tomytom.f5.si/assets/defaultpage/images/bg-topographic.svg);
+            background-size: 5000px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .custom-cursor {
+            position: fixed;
+            opacity: 0;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #00BCD4;
+            transition: transform 350ms ease;
+            transform: translate(-50%, -50%) scale(0.3);
+            z-index: 1000;
+        }
+
+        .custom-cursor--link {
+            transform: translate(-50%, -50%) scale(1.25);
+        }
+
+        /* .swoosh {
+            background-image: url("https://tomytom.f5.si/assets/defaultpage/images/logo-black.svg");
+            background-size: content;
+            background-repeat: no-repeat;
+            top: 20px;
+            left: 18px;
+            width: 300px;
+            height: 86px;
+            z-index: 1000;
+            background-position: left;
+        } */
+
+        .sticky-nav {
+            top: 20px;
+            left: 20px;
+            position: fixed;
+            width: calc(100% - 40px);
+            z-index: 999;
+        }
+
+        .sticky-nav.difference {
+            background-repeat: no-repeat;
+            background-size: contain;
+            mix-blend-mode: difference;
+        }
+
+        .sticky-nav.difference #nav-btn {
+            filter: invert(0);
+        }
+
+        .sticky-nav .logo {
+            width: 300px;
+            height: 86px;
+            background-image: url(https://tomytom.f5.si/assets/defaultpage/images/logo.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left;
+            z-index: 998;
+        }
+
+        .sticky-nav #nav-btn {
+            width: 60px;
+            z-index: 999;
+            filter: invert(1);
+        }
+
+        .sticky-nav #nav-btn .icon {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke: #fff;
+        }
+
+        #takeover-nav {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            overflow-y: auto;
+            left: 0;
+            top: -200%;
+            transition: all 0.5s ease-in-out;
+            z-index: 996;
+        }
+
+        #takeover-nav.shown {
+            top: 0;
+        }
+
+        #takeover-nav .nav-col {
+            min-height: 100vh;
+        }
+
+        #takeover-nav .nav-col a {
+            color: #efefef;
+        }
+
+        #takeover-nav .nav-col a:hover {
+            color: #212121;
+        }
+
+        #takeover-nav .nav-contact .content {
+            max-width: 700px;
+        }
+
+        #takeover-nav .nav-items {
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        #takeover-nav .contact-items {
+            font-size: 1.25em;
+            font-weight: 700;
+        }
+
+        #takeover-nav .contact-items a:hover {
+            color: #00BCD4;
+        }
+
+        #takeover-nav .social {
+            font-size: 0.75em;
+        }
+
+        #takeover-nav .social a {
+            color: #00BCD4;
+        }
+
+        #takeover-nav .social a:hover {
+            color: #efefef;
+        }
+
+        .gradient-overlay {
+            bottom: 0;
+            height: 50%;
+            background: -moz-linear-gradient(top, rgba(33, 33, 33, 0) 0%, #212121 50%);
+            background: -webkit-linear-gradient(top, rgba(33, 33, 33, 0) 0%, #212121 50%);
+            background: linear-gradient(to bottom, rgba(33, 33, 33, 0) 0%, #212121 50%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00212121", endColorstr="#212121", GradientType=0);
+            z-index: 1;
+            border-bottom-right-radius: 15vw;
+            pointer-events: none;
+        }
+
+        .video-wrap {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-bottom-right-radius: 15vw;
+            pointer-events: none;
+        }
+
+        #video-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            min-width: 100%;
+            background-position: center center;
+            background-size: cover;
+            object-fit: cover;
+            transform: rotate(180deg);
+        }
+
+        section {
+            min-height: 100vh;
+            /* height: 800px; */
+            width: 100%;
+        }
+
+        section.hero {
+            background-color: #212121;
+            border-bottom-right-radius: 15vw;
+            position: relative;
+        }
+
+        .small_txt {
+            font-size: 0.3em;
+            line-height: 180%;
+        }
+
+        /* section.hero:before {
+            content: "";
+            background-color: #212121;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 15vw;
+            height: 15vw;
+        } */
+
+        /* section.hero:after {
+            content: "";
+            background-color: #efefef;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 15vw;
+            height: 15vw;
+            border-top-left-radius: 15vw;
+        } */
+
+        /* section.two {
+            background-color: #efefef;
+        }
+
+        section.three {
+            background-color: #e8d1f6;
+        }
+
+        section.four {
+            background-color: #00BCD4;
+        }
+
+        section.five {
+            background-color: #29639c;
+        } */
+
+        @media screen and (min-width: 1200px) {
+            .hero {
+                height: 75vh;
+            }
+
+            .hero #video-bg {
+                object-position: 0 5vw;
+            }
+        }
+
+        @media screen and (max-width: 1199px) {
+            .hero #video-bg {
+                object-position: 0 15vw;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            #takeover-nav .nav-menu {
+                min-height: 500px;
+            }
+
+            #takeover-nav .nav-menu a {
+                color: #212121;
+            }
+
+            #takeover-nav .nav-menu a:hover {
+                color: #efefef;
+            }
+
+            #takeover-nav .nav-contact {
+                min-height: 600px;
+            }
+
+            #takeover-nav .nav-contact .nav-title {
+                font-size: 2.5em;
+            }
+        }
+
+        @media screen and (max-width: 575px) {
+            /* header .swoosh {
+                width: 165px;
+                height: 35px;
+                top: 10px;
+            } */
+
+            header .sticky-nav {
+                top: 10px;
+            }
+
+            header .sticky-nav .logo {
+                width: 150px;
+                height: 35px;
+            }
+
+            header .sticky-nav #nav-btn {
+                width: 40px;
+            }
+
+            header #takeover-nav .contact-items {
+                font-size: 1em;
+            }
+
+            /* .hero {
+                min-height: 600px;
+                height: 600px;
+            } */
+
+            .hero .hero-title {
+                font-size: 12vw;
+            }
+
+            .hero #video-bg {
+                object-position: 0 30vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class='page'>
+        <header>
+            <!-- <div class='swoosh position-fixed'></div> -->
+            <div class='sticky-nav difference d-flex justify-content-between'>
+                <div class='logo'></div>
+                <div class='menu box' id='nav-btn'>
+                  <svg id="i1" class="icon" viewBox="20 30 60 40">
+                  <!-- <path id="top-line-1"     d="M30,37 L70,37 Z"></path> -->
+                  <!-- <path id="middle-line-1" 	d="M30,50 L70,50 Z"></path> -->
+                  <!-- <path id="bottom-line-1" 	d="M30,63 L70,63 Z"></path> -->
+                  </svg>
+                </div>
+            </div>
+        </header>
+        <section class='hero d-flex align-items-center justify-content-center'>
+            <div class='video-wrap'>
+                <video autoplay="" playsinline="" loop="" muted="" id="video-bg">
+                    <source src="https://tomytom.f5.si/assets/defaultpage/videos/tactus-waves-hero.mp4" type="video/mp4">
+                    <source src="https://tomytom.f5.si/assets/defaultpage/videos/tactus-waves-hero.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class='position-absolute w-100 gradient-overlay'></div>
+            <div class='content position-relative text-center mb-5'>
+                <h1 class='hero-title blend'>
+                    Chúc mừng
+                    <br>
+                    <p class="small_txt">Trang web được tạo thành công!<br>Đây là file index.html mặc định, trang này được hệ thống tự động sinh ra</p>
+                </h1>
+            </div>
+        </section>
+    </div>
+    <div class='custom-cursor'></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/409445/animateAnything.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <script>
+        $("#nav-btn").on("click", function () {
+            $('#takeover-nav').toggleClass("shown");
+            $('.sticky-nav').toggleClass("difference");
+        });
+
+
+
+        ///Initiation Variables
+        var icon_1 = document.getElementById("nav-btn");
+        var topLine_1 = document.getElementById("top-line-1");
+        var middleLine_1 = document.getElementById("middle-line-1");
+        var bottomLine_1 = document.getElementById("bottom-line-1");
+        var state_1 = "menu"; // can be "menu" or "arrow"
+        var topLineY_1;
+        var middleLineY_1;
+        var bottomLineY_1;
+        var topLeftY_1;
+        var topRightY_1;
+        var bottomLeftY_1;
+        var bottomRightY_1;
+        var topLeftX_1;
+        var topRightX_1;
+        var bottomLeftX_1;
+        var bottomRightX_1;
+
+        ///Animation Variables
+        var segmentDuration_1 = 15;
+        var menuDisappearDurationInFrames_1 = segmentDuration_1;
+        var arrowAppearDurationInFrames_1 = segmentDuration_1;
+        var arrowDisappearDurationInFrames_1 = segmentDuration_1;
+        var menuAppearDurationInFrames_1 = segmentDuration_1;
+        var menuDisappearComplete_1 = false;
+        var arrowAppearComplete_1 = false;
+        var arrowDisappearComplete_1 = false;
+        var menuAppearComplete_1 = false;
+        var currentFrame_1 = 1;
+
+        ///Menu Disappear 
+        function menuDisappearAnimation_1() {
+            currentFrame_1++;
+            if (currentFrame_1 <= menuDisappearDurationInFrames_1) {
+                window.requestAnimationFrame(() => {
+                    //top line
+                    topLineY_1 = AJS.easeInBack(37, 50, menuDisappearDurationInFrames_1, currentFrame_1);
+                    topLine_1.setAttribute("d", "M30," + topLineY_1 + " L70," + topLineY_1);
+                    //bottom line
+                    bottomLineY_1 = AJS.easeInBack(63, 50, menuDisappearDurationInFrames_1, currentFrame_1);
+                    bottomLine_1.setAttribute("d", "M30," + bottomLineY_1 + " L70," + bottomLineY_1);
+                    //recursion
+                    menuDisappearAnimation_1();
+                });
+            } else {
+                middleLine_1.style.opacity = "0";
+                currentFrame_1 = 1;
+                menuDisappearComplete_1 = true;
+                openMenuAnimation_1();
+            }
+        }
+
+        ///Cross Appear
+        function arrowAppearAnimation_1() {
+            currentFrame_1++;
+            if (currentFrame_1 <= arrowAppearDurationInFrames_1) {
+                window.requestAnimationFrame(() => {
+                    //top line
+                    topLeftX_1 = AJS.easeOutBack(30, 35, arrowAppearDurationInFrames_1, currentFrame_1);
+                    topLeftY_1 = AJS.easeOutBack(50, 35, arrowAppearDurationInFrames_1, currentFrame_1);
+                    bottomRightX_1 = AJS.easeOutBack(70, 65, arrowAppearDurationInFrames_1, currentFrame_1);
+                    bottomRightY_1 = AJS.easeOutBack(50, 65, arrowAppearDurationInFrames_1, currentFrame_1);
+                    topLine_1.setAttribute("d", "M" + topLeftX_1 + "," + topLeftY_1 + " L" + bottomRightX_1 +
+                        "," + bottomRightY_1);
+                    //bottom line
+                    bottomLeftX_1 = AJS.easeOutBack(30, 35, arrowAppearDurationInFrames_1, currentFrame_1);
+                    bottomLeftY_1 = AJS.easeOutBack(50, 65, arrowAppearDurationInFrames_1, currentFrame_1);
+                    topRightX_1 = AJS.easeOutBack(70, 65, arrowAppearDurationInFrames_1, currentFrame_1);
+                    topRightY_1 = AJS.easeOutBack(50, 35, arrowAppearDurationInFrames_1, currentFrame_1);
+                    bottomLine_1.setAttribute("d", "M" + bottomLeftX_1 + "," + bottomLeftY_1 + " L" +
+                        topRightX_1 + "," + topRightY_1);
+                    //recursion
+                    arrowAppearAnimation_1();
+                });
+            } else {
+                currentFrame_1 = 1;
+                arrowAppearComplete_1 = true;
+                openMenuAnimation_1();
+            }
+        }
+
+        ///Combined Open Menu Animation
+        function openMenuAnimation_1() {
+            if (!menuDisappearComplete_1) {
+                menuDisappearAnimation_1();
+            } else if (!arrowAppearComplete_1) {
+                arrowAppearAnimation_1();
+            }
+        }
+
+        ///Cross Disappear
+        function arrowDisappearAnimation_1() {
+            currentFrame_1++;
+            if (currentFrame_1 <= arrowDisappearDurationInFrames_1) {
+                window.requestAnimationFrame(() => {
+                    //top line
+                    topLeftX_1 = AJS.easeInBack(35, 30, arrowDisappearDurationInFrames_1, currentFrame_1);
+                    topLeftY_1 = AJS.easeInBack(35, 50, arrowDisappearDurationInFrames_1, currentFrame_1);
+                    bottomRightX_1 = AJS.easeInBack(65, 70, arrowDisappearDurationInFrames_1, currentFrame_1);
+                    bottomRightY_1 = AJS.easeInBack(65, 50, arrowDisappearDurationInFrames_1, currentFrame_1);
+                    topLine_1.setAttribute("d", "M" + topLeftX_1 + "," + topLeftY_1 + " L" + bottomRightX_1 +
+                        "," + bottomRightY_1);
+                    //bottom line
+                    bottomLeftX_1 = AJS.easeInBack(35, 30, arrowDisappearDurationInFrames_1, currentFrame_1);
+                    bottomLeftY_1 = AJS.easeInBack(65, 50, arrowDisappearDurationInFrames_1, currentFrame_1);
+                    topRightX_1 = AJS.easeInBack(65, 70, arrowDisappearDurationInFrames_1, currentFrame_1);
+                    topRightY_1 = AJS.easeInBack(35, 50, arrowDisappearDurationInFrames_1, currentFrame_1);
+                    bottomLine_1.setAttribute("d", "M" + bottomLeftX_1 + "," + bottomLeftY_1 + " L" +
+                        topRightX_1 + "," + topRightY_1);
+                    //recursion
+                    arrowDisappearAnimation_1();
+                });
+            } else {
+                middleLine_1.style.opacity = "1";
+                currentFrame_1 = 1;
+                arrowDisappearComplete_1 = true;
+                closeMenuAnimation_1();
+            }
+        }
+
+        ///Menu Appear
+        function menuAppearAnimation_1() {
+            currentFrame_1++;
+            if (currentFrame_1 <= menuAppearDurationInFrames_1) {
+                window.requestAnimationFrame(() => {
+                    //top line
+                    topLineY_1 = AJS.easeOutBack(50, 37, menuDisappearDurationInFrames_1, currentFrame_1);
+                    topLine_1.setAttribute("d", "M30," + topLineY_1 + " L70," + topLineY_1);
+                    //bottom line
+                    bottomLineY_1 = AJS.easeOutBack(50, 63, menuDisappearDurationInFrames_1, currentFrame_1);
+                    bottomLine_1.setAttribute("d", "M30," + bottomLineY_1 + " L70," + bottomLineY_1);
+                    //recursion
+                    menuAppearAnimation_1();
+                });
+            } else {
+                currentFrame_1 = 1;
+                menuAppearComplete_1 = true;
+                closeMenuAnimation_1();
+            }
+        }
+
+        ///Close Menu Animation
+        function closeMenuAnimation_1() {
+            if (!arrowDisappearComplete_1) {
+                arrowDisappearAnimation_1();
+            } else if (!menuAppearComplete_1) {
+                menuAppearAnimation_1();
+            }
+        }
+
+        ///Events
+        icon_1.addEventListener("click", () => {
+            if (state_1 === "menu") {
+                openMenuAnimation_1();
+                state_1 = "arrow";
+                arrowDisappearComplete_1 = false;
+                menuAppearComplete_1 = false;
+            } else if (state_1 === "arrow") {
+                closeMenuAnimation_1();
+                state_1 = "menu";
+                menuDisappearComplete_1 = false;
+                arrowAppearComplete_1 = false;
+            }
+        });
+
+
+        // Cursor
+        document.addEventListener("DOMContentLoaded", function (event) {
+            var cursor = document.querySelector(".custom-cursor");
+            var links = document.querySelectorAll("a, button, #nav-btn, input.btn");
+
+            var initCursor = false;
+
+            for (var i = 0; i < links.length; i++) {
+                var selfLink = links[i];
+
+                selfLink.addEventListener("mouseover", function () {
+                    cursor.classList.add("custom-cursor--link");
+                });
+                selfLink.addEventListener("mouseout", function () {
+                    cursor.classList.remove("custom-cursor--link");
+                });
+            }
+
+
+            window.onmousemove = function (e) {
+                var mouseX = e.clientX;
+                var mouseY = e.clientY;
+
+                if (!initCursor) {
+                    // cursor.style.opacity = 1;
+                    TweenLite.to(cursor, 0.5, {
+                        opacity: 1
+                    });
+                    initCursor = true;
+                }
+
+                TweenLite.to(cursor, 0, {
+                    top: mouseY + "px",
+                    left: mouseX + "px"
+                });
+            };
+
+
+            window.ontouchmove = function (e) {
+                var mouseX = e.touches[0].clientX;
+                var mouseY = e.touches[0].clientY;
+                if (!initCursor) {
+                    // cursor.style.opacity = 1;
+                    TweenLite.to(cursor, 0.3, {
+                        opacity: 1
+                    });
+                    initCursor = true;
+                }
+
+                TweenLite.to(cursor, 0, {
+                    top: mouseY + "px",
+                    left: mouseX + "px"
+                });
+            };
+
+            window.onmouseout = function (e) {
+                TweenLite.to(cursor, 0.3, {
+                    opacity: 0
+                });
+                initCursor = false;
+            };
+
+            window.ontouchstart = function (e) {
+                TweenLite.to(cursor, 0.3, {
+                    opacity: 1
+                });
+            };
+
+            window.ontouchend = function (e) {
+                setTimeout(function () {
+                    TweenLite.to(cursor, 0.3, {
+                        opacity: 0
+                    });
+                }, 200);
+            };
+
+        });
+    </script>
+</body>
+
+</html>
